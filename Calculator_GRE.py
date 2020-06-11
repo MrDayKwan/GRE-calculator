@@ -1,5 +1,5 @@
 #! python3
-import random
+
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -7,8 +7,15 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.graphics import Color, Rectangle
+from kivy import Config
 
-from kivy.core.clipboard import Clipboard
+
+# Set minimum size of the window to avoid texture problems
+
+Config.set('graphics', 'width', '250')
+Config.set('graphics', 'height', '350')
+Config.set('kivy', 'window_icon', None)
+Config.set('graphics', 'resizable', False)
 
 # global variables
 memory = '0'
@@ -298,6 +305,7 @@ class CalculatorScreen(GridLayout):
 
 class MyApp(App):
 	def build(self):
+		self.title = 'Calculator'
 		return CalculatorScreen()
 
 
