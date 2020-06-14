@@ -10,7 +10,7 @@ from kivy.graphics import Color, Rectangle
 from kivy import Config
 
 
-# Set minimum size of the window to avoid texture problems
+# Set minimum size of the App window to match dimensions of the GRE calculator
 
 Config.set('graphics', 'width', '250')
 Config.set('graphics', 'height', '350')
@@ -140,7 +140,8 @@ class CalculatorScreen(GridLayout):
 		
 
                 try:
-			total = round(eval(current_equation), 7)
+			# Evaluate the current equation, round it to seven places, and set that value as the total.
+                        total = round(eval(current_equation), 7)
 			if abs(total) > 10000000:
 				main_display_text = 'GRE Error'
 				current_equation = ''
