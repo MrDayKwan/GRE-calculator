@@ -24,6 +24,8 @@ main_display_text = '0'
 
 
 class CalculatorDisplay(Label):
+        """Represents the display panel of the calculator. 
+        Inherits from Kivy Label class, and contains text that is set to align right."""
 	def on_size(self, *args):
 		self.canvas.before.clear()
 		with self.canvas.before:
@@ -35,6 +37,7 @@ class CalculatorDisplay(Label):
 
 
 class Button_With_Value(Button):
+        """Defines a button class that has a value, as well as a background color."""
 	def on_size(self, button_value='', *args):
 		self.canvas.before.clear()
 		self.bind(size=self.setter('texture_size'))
@@ -45,54 +48,98 @@ class Button_With_Value(Button):
 
 
 class CalculatorScreen(GridLayout):
-	current_equation = '100'
-	main_display_text = '100'
-	memory = '0'
+        """Defines a grid layout for the main buttons of the screen."
+	# Current equation is used for troubleshooting the display. This text shows a complete, un-evaluated equation. 
+        current_equation = '100'
+	
+        # Main Display is the evaluated value that the calculator prints on the screen.
+        main_display_text = '100'
+	
+        # The memory value is not displayed, but can be set and recalled.
+        memory = '0'
 
 	def update(self):
+                """Updates the current main display and equation text values."""
 		self.main_display.text = main_display_text
 		self.equation_display.text = current_equation
 
 	def send_digit(self, sending_button):
-		global main_display_text
+                """Sends the digit of the pressed button to the main display and the current equation."""
+		
+                # First, access the global variables for the main display and current equation
+                global main_display_text
 		global current_equation
+
+                # If the main display is 0, clear the main display to avoid having numbers like 0123.5
 		if main_display_text == '0':
 			main_display_text = ''
-		if current_equation == '0':
+		
+                # If the current equation is 0, clear the current equation to avoid evaluation errors.
+                if current_equation == '0':
 			current_equation = ''
-		if ' ' in main_display_text:
+		
+                #  Clear any blank spaces in the main display, if present.
+                if ' ' in main_display_text:
 			main_display_text = ''
 			current_equation = ''
-		main_display_text += sending_button.text
+		
+                # Concatenate the text value from the button to the main display and equation values.
+                main_display_text += sending_button.text
 		current_equation += sending_button.text
-		self.update()
+		
+                # Then update the GUI representations of the main display and equation fields.
+                self.update()
 
 	def send_operator(self, sending_button):
-		global main_display_text
+                """Function used for operator buttons (+, -, /, *, =) to send those values to the equation and main displays."""
+		
+                # Access the global variables
+                global main_display_text
 		global current_equation
-		if main_display_text == '0':
+		
+                # If the main display equals zero, clear it.
+                if main_display_text == '0':
 			main_display_text = ''
-		if current_equation == '':
+		
+                # If the current equation is empty, set it to zero to avoid evaluation errors.
+                if current_equation == '':
 			current_equation = '0'
-		main_display_text = '0'
+		
+                # Set the main display to zero, append the operator button value to the equation, and update.
+                # We use the button value here instead of the button text because of the symbols * and /, 
+                # which are not the symbols displayed as the keys on the calculator.
+                main_display_text = '0'
 		current_equation += sending_button.button_value
 		self.update()
 
 	def send(self, sending_button):
+                """Generic function to append a button text value to the main display and equation."""
 		global main_display_text
 		global current_equation
-		if main_display_text == '0':
+		
+                # If main display equals zero, clear it.
+                if main_display_text == '0':
 			main_display_text = ''
-		if current_equation == '0':
+		
+                # If current equation equals zero, clear it
+                if current_equation == '0':
 			current_equation = ''
-		main_display_text += sending_button.text
+		
+                # Concatenate the main display text and current equation text
+                # with the text value of the button pressed.
+                main_display_text += sending_button.text
 		current_equation += sending_button.text
 		self.update()
 
 	def evaluate(self, sending_button):
-		global main_display_text
+                """Evaluates the current equation and updates the main display with the result."""
+		
+                # First, access the global variables for the main display and current equation.
+                global main_display_text
 		global current_equation
-		try:
+		
+
+                try:
 			total = round(eval(current_equation), 7)
 			if abs(total) > 10000000:
 				main_display_text = 'GRE Error'
