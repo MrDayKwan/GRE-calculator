@@ -13,7 +13,7 @@ from kivy.lang import Builder
 
 Builder.load_string("""
 <BackgroundColor@Widget>
-	background_color: 1, 1, 1, 1
+	background_color: 249, 253, 251, 1
 	canvas.before:
 		Color:
 			rgba: root.background_color
@@ -22,22 +22,24 @@ Builder.load_string("""
 			pos: self.pos
 
 <BackgroundLabel@Label+BackgroundColor>
-	background_color: 0, 0, 0, 0
+	background_color: 249, 253, 251, 1
 
 <TitleBar>
 	BoxLayout:
 		orientation: "horizontal"
 		BackgroundLabel:
-			text: "Calculator"
+			text: "Calculator             "
+			bold: True
+			font_size: '26sp'
 			color: 0, 0, 0, 1
 			background_color: 0.82, 0.89, 0.93, 1
-			size_hint: None, None
-			height: self.texture_size[1]
+			size_hint: 1, .5
+			# height: self.texture_size[1]
 		Button:
 			text: "X"
-			size_hint: None, None
-			color: 0, 0, 0, 1
-			height: self.texture_size[1]
+			size_hint: .1, .5
+			color: 249, 253, 251, 1
+			# height: self.texture_size[1]
 			on_press: app.stop()
 """)
 
@@ -338,7 +340,7 @@ class CalculatorScreen(GridLayout):
 			pass
 
 		# Add Title Bar
-		self.title_bar = TitleBar(size_hint=(None, None))
+		self.title_bar = TitleBar(size_hint=(1, .5))
 		self.add_widget(self.title_bar)
 
 		#  Add Box Layout for display
@@ -349,7 +351,7 @@ class CalculatorScreen(GridLayout):
 
 		# Add M label to left side of display
 		self.labelM = CalculatorDisplay(text='M', size_hint_x=.2)
-		self.labelM.color = (0, 0, 0, 1)
+		self.labelM.color = (249, 253, 251, 1)
 		self.labelM.size_hint_y = None
 		self.labelM.font_size = 30
 		self.box_display.add_widget(self.labelM)
@@ -361,7 +363,7 @@ class CalculatorScreen(GridLayout):
 		self.main_display.text = main_display_text
 		self.main_display.font_size = 30
 		self.main_display.size_hint_y = None
-		self.main_display.color = (0, 0, 0, 1)
+		self.main_display.color = (249, 253, 0, 1)
 		self.box_display.add_widget(self.main_display)
 
 		# create horizontal box for two side by side buttons
