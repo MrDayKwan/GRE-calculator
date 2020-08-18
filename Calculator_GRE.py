@@ -414,6 +414,15 @@ class CalculatorScreen(GridLayout):
 			else:
 				pass
 
+		# Transfer Display Button
+		self.transferDisplayBtn = Button(text="Transfer Display", font_size="26sp", bold="True", color=[0, 0, 0, 1],
+										 background_normal = "",
+										 background_color = [.98, .98, .98, 1],
+										 border = [10, 10, 10, 10])
+
+		self.add_widget(self.transferDisplayBtn)
+
+
 
 class MyApp(App):
 	def build(self):
