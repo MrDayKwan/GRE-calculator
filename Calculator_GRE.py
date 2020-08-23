@@ -24,21 +24,28 @@ Builder.load_string("""
 <BackgroundLabel@Label+BackgroundColor>
 	background_color: 249, 253, 251, 1
 
+<BackgroundButton@Button+BackgroundColor>
+	background_color: 0.82, 0.89, 0.93, 1
+
 <TitleBar>
 	BoxLayout:
 		orientation: "horizontal"
+		# size_hint_y: None
 		BackgroundLabel:
 			text: "Calculator             "
 			bold: True
 			font_size: '26sp'
 			color: 0, 0, 0, 1
 			background_color: 0.82, 0.89, 0.93, 1
-			size_hint: 1, .5
+			#size_hint: 1, .5
 			# height: self.texture_size[1]
 		Button:
 			text: "X"
-			size_hint: .1, .5
+			font_size: '26sp'
+			size_hint: .15, 1
 			color: 249, 253, 251, 1
+			background_normal: ""
+			background_color: (0.97, 0.99, 0.98, 1)
 			# height: self.texture_size[1]
 			on_press: app.stop()
 """)
@@ -68,18 +75,32 @@ class CalculatorDisplay(Label):
 																texture_size=lambda *x: self.setter('height')(
 																	self.canvas, self.texture_size[1])))
 
+		# Add gray border around the display
+		self.canvas.after.clear()
+		with self.canvas.after:
+			Color(0, 0, 0, 1)
+			self.line = Line(width=1.05,
+							 points=(self.x, self.y,
+									 self.x, self.y + self.height,
+									 self.x + self.width, self.y + self.height,
+									 self.x + self.width, self.y,
+									 self.x, self.y,), color=(0, 0, 0, 1))
+
 
 class Button_With_Value(Button):
 	"""
 	Defines a button class that has a value, as well as a background color.
 	"""
 
+
 	def on_size(self, button_value='', *args):
 		self.canvas.before.clear()
 		self.bind(size=self.setter('texture_size'))
+		self.background_normal = ""
+		self.background_color = (0.97, 0.99, 0.98, 1)
 		with self.canvas.before:
 			Color(1, 1, 1, 1)
-			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, size_hint_x=None, font=160,
+			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, size_hint_x=None, font=160, bold=True,
 					  # text_size=(self.width, None),
 					  height=0.9 * self.texture_size[1], width=0.5 * self.texture_size[0])
 
@@ -340,19 +361,19 @@ class CalculatorScreen(GridLayout):
 			pass
 
 		# Add Title Bar
-		self.title_bar = TitleBar(size_hint=(1, .5))
+		self.title_bar = TitleBar(size_hint=(1, .15))
 		self.add_widget(self.title_bar)
 
 		#  Add Box Layout for display
-		self.box_display = BoxLayout(orientation='horizontal')
+		self.box_display = BoxLayout(orientation='horizontal', size_hint=(1, .25), spacing=7)
 		self.add_widget(self.box_display)
 		self.cols = 1
-		self.box_display.size_hint_y = None
+		# self.box_display.size_hint_y = 0.5
 
 		# Add M label to left side of display
-		self.labelM = CalculatorDisplay(text='M', size_hint_x=.2)
+		self.labelM = CalculatorDisplay(text=' ', size_hint_x=.3)
 		self.labelM.color = (249, 253, 251, 1)
-		self.labelM.size_hint_y = None
+		# self.labelM.size_hint_y = 0.5
 		self.labelM.font_size = 30
 		self.box_display.add_widget(self.labelM)
 
@@ -362,12 +383,12 @@ class CalculatorScreen(GridLayout):
 		self.main_display.multiline = False
 		self.main_display.text = main_display_text
 		self.main_display.font_size = 30
-		self.main_display.size_hint_y = None
+		# self.main_display.size_hint_y = 0.5
 		self.main_display.color = (249, 253, 0, 1)
 		self.box_display.add_widget(self.main_display)
 
 		# create horizontal box for two side by side buttons
-		self.buttonGrid = GridLayout()
+		self.buttonGrid = GridLayout(spacing=7)
 		self.add_widget(self.buttonGrid)
 		self.buttonGrid.cols = 5
 
@@ -418,7 +439,8 @@ class CalculatorScreen(GridLayout):
 		self.transferDisplayBtn = Button(text="Transfer Display", font_size="26sp", bold="True", color=[0, 0, 0, 1],
 										 background_normal = "",
 										 background_color = [.98, .98, .98, 1],
-										 border = [10, 10, 10, 10])
+										 border = [10, 10, 10, 10],
+										 size_hint = [1, .2])
 
 		self.add_widget(self.transferDisplayBtn)
 
@@ -427,8 +449,9 @@ class CalculatorScreen(GridLayout):
 class MyApp(App):
 	def build(self):
 		self.title = 'Calculator'
+		Window.clearcolor = (1, 1, 1, 1)
 		Window.size = (300, 430)
-		Window.borderless = True
+		# Window.borderless = True
 		return CalculatorScreen()
 
 
