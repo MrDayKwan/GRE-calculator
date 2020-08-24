@@ -42,7 +42,7 @@ Builder.load_string("""
 		Button:
 			text: "X"
 			font_size: '26sp'
-			size_hint: .15, 1
+			size_hint: .1, 1
 			color: 249, 253, 251, 1
 			background_normal: ""
 			background_color: (0.97, 0.99, 0.98, 1)
@@ -69,22 +69,21 @@ class CalculatorDisplay(Label):
 		self.canvas.before.clear()
 		with self.canvas.before:
 			Color(1, 1, 1, 1)
-			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, text_size=self.setter('texture_size'),
+			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, text_size=self.size,
 					  halign='right', valign='middle', multiline=False,
 					  width=lambda *x: self.setter('text_size')(self, (self.width, None),
 																texture_size=lambda *x: self.setter('height')(
 																	self.canvas, self.texture_size[1])))
-
-		# Add gray border around the display
+		# Add gray border around the display box
 		self.canvas.after.clear()
 		with self.canvas.after:
-			Color(0, 0, 0, 1)
+			Color(0.66, 0.66, 0.66, 1)
 			self.line = Line(width=1.05,
-							 points=(self.x, self.y,
-									 self.x, self.y + self.height,
-									 self.x + self.width, self.y + self.height,
-									 self.x + self.width, self.y,
-									 self.x, self.y,), color=(0, 0, 0, 1))
+							 points=(self.x, self.y + (0.20 * self.height),
+									 self.x, self.y + (0.8 * self.height),
+									 self.x + self.width, self.y + (0.8 * self.height),
+									 self.x + self.width, self.y + (0.20 * self.height),
+									 self.x, self.y + (0.20 * self.height),), color=(0.66, 0.66, 0.66, 1))
 
 
 class Button_With_Value(Button):
@@ -92,11 +91,12 @@ class Button_With_Value(Button):
 	Defines a button class that has a value, as well as a background color.
 	"""
 
-
 	def on_size(self, button_value='', *args):
 		self.canvas.before.clear()
 		self.bind(size=self.setter('texture_size'))
 		self.background_normal = ""
+		self.bold = True
+		self.font = 64
 		self.background_color = (0.97, 0.99, 0.98, 1)
 		with self.canvas.before:
 			Color(1, 1, 1, 1)
@@ -120,6 +120,7 @@ class CalculatorScreen(GridLayout):
 	"""
 	Defines a grid layout for the main buttons of the screen.
 	"""
+
 	# Current equation is used for troubleshooting the display. This text shows a complete, un-evaluated equation.
 	current_equation = '100'
 
@@ -128,6 +129,20 @@ class CalculatorScreen(GridLayout):
 
 	# The memory value is not displayed, but can be set and recalled.
 	memory = '0'
+
+	def on_size(self, *args):
+
+		# Add black border around button
+		self.canvas.after.clear()
+		with self.canvas.after:
+			Color(0, 0, 0, 1)
+			self.line = Line(width=1.05,
+							 points=(self.x, self.y,
+									 self.x, self.y + self.height,
+									 self.x + self.width, self.y + self.height,
+									 self.x + self.width, self.y,
+									 self.x, self.y,), color=(0, 0, 0, 1))
+
 
 	def update(self):
 		"""
@@ -341,6 +356,7 @@ class CalculatorScreen(GridLayout):
 		super(CalculatorScreen, self).__init__(**kwargs)
 		self.orientation = 'vertical'
 		self.cols = 1
+		self.spacing = 7
 
 		# create title label at top of screen
 		# self.main_label = Label(text='\n[b]Work in progress[/b]\n', markup=True)
@@ -365,24 +381,30 @@ class CalculatorScreen(GridLayout):
 		self.add_widget(self.title_bar)
 
 		#  Add Box Layout for display
-		self.box_display = BoxLayout(orientation='horizontal', size_hint=(1, .25), spacing=7)
+		self.box_display = BoxLayout(orientation='horizontal', size_hint=(1, .25), spacing=2)
 		self.add_widget(self.box_display)
 		self.cols = 1
 		# self.box_display.size_hint_y = 0.5
 
 		# Add M label to left side of display
-		self.labelM = CalculatorDisplay(text=' ', size_hint_x=.3)
+		self.labelM = Label(text=' ', size_hint_x=.2)
 		self.labelM.color = (249, 253, 251, 1)
 		# self.labelM.size_hint_y = 0.5
 		self.labelM.font_size = 30
 		self.box_display.add_widget(self.labelM)
 
 		# create main display for generated expressions
-		self.main_display = CalculatorDisplay(size_hint_x=.8, halign='right', valign='middle')
+		self.main_display = CalculatorDisplay(size_hint_x=.8, halign='right', valign='middle', size_hint=(1.0, 1.0))
+
 		# self.name.bind(texture_size=self.name.setter('text_size'))
 		self.main_display.multiline = False
 		self.main_display.text = main_display_text
 		self.main_display.font_size = 30
+
+		# Source for right-aligned label contents:
+		# https://stackoverflow.com/questions/31638788/python-kivy-align-text-to-the-left-side-of-a-label
+		self.main_display.bind(size=self.main_display.setter('text_size'))
+
 		# self.main_display.size_hint_y = 0.5
 		self.main_display.color = (249, 253, 0, 1)
 		self.box_display.add_widget(self.main_display)
@@ -451,7 +473,7 @@ class MyApp(App):
 		self.title = 'Calculator'
 		Window.clearcolor = (1, 1, 1, 1)
 		Window.size = (300, 430)
-		# Window.borderless = True
+		Window.borderless = True
 		return CalculatorScreen()
 
 
