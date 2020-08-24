@@ -39,10 +39,11 @@ Builder.load_string("""
 			background_color: 0.82, 0.89, 0.93, 1
 			#size_hint: 1, .5
 			# height: self.texture_size[1]
-		Button:
+		BorderedButton:
 			text: "X"
-			font_size: '26sp'
-			size_hint: .1, 1
+			font_size: '20sp'
+			valign: "middle"
+			size_hint: .1, .8
 			color: 249, 253, 251, 1
 			background_normal: ""
 			background_color: (0.97, 0.99, 0.98, 1)
@@ -59,6 +60,28 @@ memory = '0'
 current_equation = ''
 main_display_text = '0'
 
+
+class TransferButton(Button):
+	def on_touch_down(self, touch):
+		print("\nCustomLabel.on_touch_down:")
+
+		if self.collide_point(*touch.pos):
+			print("\ttouch.pos =", touch.pos)
+			self.touch_x, self.touch_y = touch.spos[0], touch.spos[1]
+			return True
+		return super(TransferButton, self).on_touch_down(touch)
+
+	def on_touch_move(self, touch):
+		print("\nCustomLabel.on_touch_move:")
+
+		if self.collide_point(*touch.pos):
+			print("\ttouch.pos =", touch.pos)
+			print('top is', self.touch_y + touch.spos[0])
+			print('left is', self.touch_x + touch.spos[1])
+			Window.top = self.touch_y + touch.spos[0]
+			Window.left = self.touch_x + touch.spos[1]
+			return True
+		return super(TransferButton, self).on_touch_move(touch)
 
 class CalculatorDisplay(Label):
 	"""
@@ -96,13 +119,30 @@ class Button_With_Value(Button):
 		self.bind(size=self.setter('texture_size'))
 		self.background_normal = ""
 		self.bold = True
-		self.font = 64
+		self.font = 128
 		self.background_color = (0.97, 0.99, 0.98, 1)
 		with self.canvas.before:
 			Color(1, 1, 1, 1)
-			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, size_hint_x=None, font=160, bold=True,
+			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, size_hint_x=None, font=160, bold=True)#,
 					  # text_size=(self.width, None),
-					  height=0.9 * self.texture_size[1], width=0.5 * self.texture_size[0])
+					  # height=0.9 * self.texture_size[1], width=0.5 * self.texture_size[0])
+
+		# Add black border around button
+		self.canvas.after.clear()
+		with self.canvas.after:
+			Color(0, 0, 0, 1)
+			self.line = Line(width=1.05,
+							 points=(self.x, self.y,
+									 self.x, self.y + self.height,
+									 self.x + self.width, self.y + self.height,
+									 self.x + self.width, self.y,
+									 self.x, self.y,), color=(0, 0, 0, 1))
+
+class BorderedButton(Button):
+	"""
+	Class for BorderedButton object which inherits from the kivy Button class but also carries a black border
+	"""
+	def on_size(self, *args):
 
 		# Add black border around button
 		self.canvas.after.clear()
@@ -357,6 +397,7 @@ class CalculatorScreen(GridLayout):
 		self.orientation = 'vertical'
 		self.cols = 1
 		self.spacing = 7
+		self.padding = 7
 
 		# create title label at top of screen
 		# self.main_label = Label(text='\n[b]Work in progress[/b]\n', markup=True)
@@ -458,10 +499,9 @@ class CalculatorScreen(GridLayout):
 				pass
 
 		# Transfer Display Button
-		self.transferDisplayBtn = Button(text="Transfer Display", font_size="26sp", bold="True", color=[0, 0, 0, 1],
+		self.transferDisplayBtn = TransferButton(text="Transfer Display", font_size="26sp", bold="True", color=[0, 0, 0, 1],
 										 background_normal = "",
 										 background_color = [.98, .98, .98, 1],
-										 border = [10, 10, 10, 10],
 										 size_hint = [1, .2])
 
 		self.add_widget(self.transferDisplayBtn)
