@@ -27,6 +27,8 @@ Builder.load_string("""
 <BackgroundButton@Button+BackgroundColor>
 	background_color: 0.82, 0.89, 0.93, 1
 
+
+
 <TitleBar>
 	BoxLayout:
 		orientation: "horizontal"
@@ -82,6 +84,19 @@ class TransferButton(Button):
 			Window.left = self.touch_x + touch.spos[1]
 			return True
 		return super(TransferButton, self).on_touch_move(touch)
+
+	def on_size(self, *args):
+
+		# Add black border around button
+		self.canvas.after.clear()
+		with self.canvas.after:
+			Color(0, 0, 0, 1)
+			self.line = Line(width=1.05,
+							 points=(self.x, self.y,
+									 self.x, self.y + self.height,
+									 self.x + self.width, self.y + self.height,
+									 self.x + self.width, self.y,
+									 self.x, self.y,), color=(0, 0, 0, 1))
 
 class CalculatorDisplay(Label):
 	"""
