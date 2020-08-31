@@ -11,6 +11,10 @@ from kivy import Config
 from kivy.core.window import Window
 from kivy.lang import Builder
 
+# Imported to modify text size in buttons
+from kivy.uix.image import Image
+from kivy.properties import StringProperty
+
 Builder.load_string("""
 <BackgroundColor@Widget>
 	background_color: 249, 253, 251, 1
@@ -62,7 +66,6 @@ memory = '0'
 current_equation = ''
 main_display_text = '0'
 
-
 class TransferButton(Button):
 	def on_touch_down(self, touch):
 		print("\nCustomLabel.on_touch_down:")
@@ -98,6 +101,7 @@ class TransferButton(Button):
 									 self.x + self.width, self.y,
 									 self.x, self.y,), color=(0, 0, 0, 1))
 
+
 class CalculatorDisplay(Label):
 	"""
 	Represents the display panel of the calculator.Inherits from Kivy Label class, and contains text that is set to align right.
@@ -124,6 +128,8 @@ class CalculatorDisplay(Label):
 									 self.x, self.y + (0.20 * self.height),), color=(0.66, 0.66, 0.66, 1))
 
 
+
+
 class Button_With_Value(Button):
 	"""
 	Defines a button class that has a value, as well as a background color.
@@ -141,6 +147,31 @@ class Button_With_Value(Button):
 			Rectangle(pos=self.pos, size=self.size, size_hint_y=None, size_hint_x=None, font=160, bold=True)#,
 					  # text_size=(self.width, None),
 					  # height=0.9 * self.texture_size[1], width=0.5 * self.texture_size[0])
+
+		# Add black border around button
+		self.canvas.after.clear()
+		with self.canvas.after:
+			Color(0, 0, 0, 1)
+			self.line = Line(width=1.05,
+							 points=(self.x, self.y,
+									 self.x, self.y + self.height,
+									 self.x + self.width, self.y + self.height,
+									 self.x + self.width, self.y,
+									 self.x, self.y,), color=(0, 0, 0, 1))
+
+class ButtonWithScaledText(Image):
+	text = StringProperty('')
+
+
+	def on_text(self, *_):
+		btn = Button_With_Value(text=self.text)
+		btn.font_size = '1000dp'
+		btn.bold = True
+		btn.texture_update()
+		self.texture = btn.texture
+		self.size_hint_y = 0.25
+
+	def on_size(self, *args):
 
 		# Add black border around button
 		self.canvas.after.clear()
@@ -514,12 +545,9 @@ class CalculatorScreen(GridLayout):
 				pass
 
 		# Transfer Display Button
-		self.transferDisplayBtn = TransferButton(text="Transfer Display", font_size="26sp", bold="True", color=[0, 0, 0, 1],
-										 background_normal = "",
-										 background_color = [.98, .98, .98, 1],
-										 size_hint = [1, .2])
-
-		self.add_widget(self.transferDisplayBtn)
+		self.newTransferDisplayBtn = ButtonWithScaledText(text='Transfer Display', color=[0, 0, 0, 1])
+		self.newTransferDisplayBtn.bold = True
+		self.add_widget(self.newTransferDisplayBtn)
 
 
 
