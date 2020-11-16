@@ -1,10 +1,10 @@
-# GRE-calculator
+# GRE Calculator
  Personal project using Kivy to deisgn a calculator app that looks and functions like the computer calculator on the Quantitative Measures section of the Graduate Records Examinations (GRE).
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![GRE Calculator][product-screenshot]](https://example.com)
+[![GRE Calculator][product-screenshot]](https://github.com/asa-holland/GRE-calculator)
 
 The Quantitative Measures section of the GRE is taken on a computer, and the only legal calculator allowed for use during this section of the exam is an on-screen calculator provided as part of the GRE software. In some current versions of the GRE, this on-screen calculator has been reworked to have [a fresh look and appearance](https://www.ets.org/gre/revised_general/prepare/quantitative_reasoning/calculator/). However, other versions of the GRE still rely on the classic calculator program, as displayed in the following image:
 
@@ -16,7 +16,7 @@ At the time of this project, the only known ways to access this particular calcu
 * using the [two free sample exams available through POWERPREP](https://ereg.ets.org/ereg/public/testPrep/viewtestPreparation?_p=GRI).
 * purchasing additional practice exams through [POWERPREP](https://ereg.ets.org/ereg/public/testPrep/viewtestPreparation?_p=GRI).
 * purchasing a mock practice exam through [Magoosh](https://magoosh.com/gre/2011/mock-tests-for-the-new-gre/).
-* purchasing and actively taking the GRE exam from ETS.
+* purchasing and actively taking the actual GRE from [ETS](https://www.ets.org/gre).
 
 The goal of this project was to create a tool that could replicate the look, feel, and function of the 'classic' calculator to be openly available, such that the calculator could be installed and utilized outside of the GRE, POWERPREP practice exams, or Magoosh mock exams.
 
@@ -24,6 +24,8 @@ The goal of this project was to create a tool that could replicate the look, fee
 * The only way to move the GRE Calculator on the view screen is to click and hold the Transfer Display button.
 * Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display an output of 0.
 * Digits and mathematical operations input using the user's keyboard do not enter onto the GRE Calculator display, only on-screen clicks of the GRE Calculator app provide input.
+
+**Note: This tool only supports the Windows platform at the moment.**
 
 
 ### Built With
@@ -57,7 +59,7 @@ python get-pip.py -g
 ```sh
 git clone https://github.com/asa-holland/GRE-calculator.git
 ```
-2. Enter the following command to user Pip to install this repository's dependencies.
+3. Enter the following command to use Pip to install this repository's dependencies.
 ```sh
 pip install -r requirements.txt
 ```
