@@ -1,14 +1,11 @@
 # GRE-calculator
- Personal project using Kivy to deisgn a calculator app that looks and functions like the computer calculator on the GRE
+ Personal project using Kivy to deisgn a calculator app that looks and functions like the computer calculator on the Quantitative Measures section of the Gradual Record Exam (GRE).
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
 
 
 ### Built With
@@ -24,20 +21,25 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* Python
+Navigate to the [Python](https://www.python.org/downloads/) website and download the latest version.
+
+* pip
+Open the command line, and use the following command to utilize python to get pip.
 ```sh
-npm install npm@latest -g
+python get-pip.py -g
 ```
+
 
 ### Installation
 
-1. Clone the repo
+1. Clone this reposittory to your local machine.
 ```sh
 git clone https://github.com/asa-holland/GRE-calculator.git
 ```
-2. Install NPM packages
+2. Install this repository's dependencies using pip.
 ```sh
-npm install
+pip install -r requirements.txt
 ```
 
 
@@ -54,7 +56,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/asa-holland/GRE-calculator/issues) for a list of proposed features (and known issues).
 
 
 
@@ -81,9 +83,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Asa Holland - [@AsaHolland404](https://twitter.com/AsaHolland404) - hollandasa@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com/asa-holland/GRE-calculator)
 
 
 
@@ -101,15 +103,15 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-square
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=flat-square
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=flat-square
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
+[contributors-url]: https://github.com/asa-holland/GRE-calculator/graphs/contributors
+[forks-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
+[forks-url]: https://github.com/asa-holland/GRE-calculator/network/members
+[stars-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
+[stars-url]: https://github.com/asa-holland/GRE-calculator/stargazers
+[issues-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
+[issues-url]: https://github.com/asa-holland/GRE-calculator/issues
+[license-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
+[license-url]: https://github.com/asa-holland/GRE-calculator/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
 [product-screenshot]: images/screenshot.png
