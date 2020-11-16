@@ -4,7 +4,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![GRE Calculator][product-screenshot]](https://example.com)
 
 The Quantitative Measures section of the GRE is taken on a computer, and the only legal calculator allowed for use during this section of the exam is an on-screen calculator provided as part of the GRE software. In some current versions of the GRE, this on-screen calculator has been reworked to have [a fresh look and appearance](https://www.ets.org/gre/revised_general/prepare/quantitative_reasoning/calculator/). However, other versions of the GRE still rely on the classic calculator program, as displayed in the following image:
 
@@ -21,14 +21,14 @@ At the time of this project, the only known ways to access this particular calcu
 The goal of this project was to create a tool that could replicate the look, feel, and function of the 'classic' calculator to be openly available, such that the calculator could be installed and utilized outside of the GRE, POWERPREP practice exams, or Magoosh mock exams.
 
 'Features' of this GRE Calculator that match those of the Classic GRE Calculator:
-* Transfer Display button functions as the only way to move the GRE Calculator on the view screen.
-* Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display no output.
+* The only way to move the GRE Calculator on the view screen is to click and hold the Transfer Display button.
+* Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display an output of 0.
 * Digits and mathematical operations input using the user's keyboard do not enter onto the GRE Calculator display, only on-screen clicks of the GRE Calculator app provide input.
 
 
 ### Built With
 
-* [Kivy](https://kivy.org/doc/stable/)
+* [Kivy](https://kivy.org/doc/stable/): a Python framework for developing user interface applications 
 
 
 <!-- GETTING STARTED -->
@@ -110,12 +110,12 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 
 
 <!-- ACKNOWLEDGEMENTS -->
-<!-- ## Acknowledgements
+## Acknowledgements
 
+* [YashKhandelwal8](https://auth.geeksforgeeks.org/user/YashKhandelwal8/articles) from GeeksForGeeks wrote a [nice article](https://www.geeksforgeeks.org/how-to-make-calculator-using-kivy-python/) on building basic calculator functions from scratch using Kivy. This project derives initial functions from this article.
 * []()
 * []()
-* []()
- -->
+
 
 
 
