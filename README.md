@@ -20,24 +20,26 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* Python
-Navigate to the [Python](https://www.python.org/downloads/) website and download the latest version.
+In order to use the GRE Calculator, you must first have Python and pip installed on your system. If you need assistance installing these prerequisites, see the folowing steps:
+* Python is a programming language. The majority of this project's code base is written in Python. Download the latest version of [Python](https://www.python.org/downloads/) and install onto your local machine.
 
-* pip
-Open the command line, and use the following command to utilize python to get pip.
+* Pip is the package installer for Python. Once Python is installed, open your local machine's command line and use the following command to utilize Python to install Pip:
 ```sh
 python get-pip.py -g
 ```
 
+* Git is a version control system. In this project, Git is used to clone (copy) the most up-to-date project files from GitHub to your local machine. Download the latest version of [git](https://git-scm.com/download/win) and install on your local machine.
+
 
 ### Installation
 
-1. Clone this reposittory to your local machine.
+1. Open the command line on your local machine.
+
+2. Using Git, clone this repository to your local machine.
 ```sh
 git clone https://github.com/asa-holland/GRE-calculator.git
 ```
-2. Install this repository's dependencies using pip.
+2. Using pip, install this repository's dependencies.
 ```sh
 pip install -r requirements.txt
 ```
