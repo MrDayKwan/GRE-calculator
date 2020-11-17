@@ -115,8 +115,7 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 ## Acknowledgements
 
 * [YashKhandelwal8](https://auth.geeksforgeeks.org/user/YashKhandelwal8/articles) from GeeksForGeeks wrote a [nice article](https://www.geeksforgeeks.org/how-to-make-calculator-using-kivy-python/) on building basic calculator functions from scratch using Kivy. This project derives initial functions from this article.
-* []()
-* []()
+* [Jakub Bláha](https://github.com/JakubBlaha) wrote the [KivyOnTop](https://github.com/JakubBlaha/KivyOnTop) repository on GitHub. This was shamelessly copied and incorporated into this project.
 
 
 
