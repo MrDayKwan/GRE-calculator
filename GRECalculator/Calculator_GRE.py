@@ -212,7 +212,7 @@ class CalculatorScreen(GridLayout):
         """
         Updates the current main display and equation text values.
         """
-        self.main_display.text = main_display_text
+        self.main_display.text = main_display_text[0:12]
         self.equation_display.text = current_equation
 
     def send_digit(self, sending_button):
@@ -225,6 +225,10 @@ class CalculatorScreen(GridLayout):
         # First, access the global variables for the main display and current equation
         global main_display_text
         global current_equation
+
+        # Check the length of the main display text, if it is 12 or more characters, do nothing
+        if len(main_display_text) >= 12:
+            return
 
         # If the main display is 0, clear the main display to avoid having numbers like 0123.5
         if main_display_text == '0':
@@ -280,6 +284,7 @@ class CalculatorScreen(GridLayout):
         # If current equation equals zero, clear it
         if current_equation == '0':
             current_equation = ''
+
 
         # Concatenate the main display text and current equation text
         # with the text value of the button pressed.
@@ -425,7 +430,7 @@ class CalculatorScreen(GridLayout):
 
         # initial set up of vertical screen setup
         super(CalculatorScreen, self).__init__(**kwargs)
-        self.orientation = 'vertical'
+        # self.orientation = 'vertical'
         self.cols = 1
         self.spacing = 7
         self.padding = 7
@@ -542,6 +547,9 @@ class MyApp(KivyontopApp):
         # Return the content of the calculator
         return CalculatorScreen()
 
+
+def run_calculator_app():
+    MyApp().run()
 
 if __name__ == '__main__':
     MyApp().run()
