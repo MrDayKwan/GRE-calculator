@@ -270,7 +270,7 @@ class CalculatorScreen(GridLayout):
         global current_equation
 
         # If the main display equals zero, clear it.
-        if main_display_text == '0':
+        if main_display_text == '0.' or current_equation == '0':
             main_display_text = ''
 
         # If the current equation is empty, set it to zero to avoid evaluation errors.
@@ -294,11 +294,11 @@ class CalculatorScreen(GridLayout):
         global current_equation
 
         # If main display equals zero, clear it.
-        if main_display_text == '0':
+        if main_display_text == '0.' or current_equation == '0':
             main_display_text = ''
 
         # If current equation equals zero, clear it
-        if current_equation == '0':
+        if current_equation == '0.' or current_equation == '0':
             current_equation = ''
 
 
@@ -316,24 +316,59 @@ class CalculatorScreen(GridLayout):
         global current_equation
 
         try:
-            # Evaluate the current equation, round it to seven places, and set that value as the total.
+            # Evaluate the current equation, round it to eight places, and set that value as the total.
 
             # Determine the number of digits outside of the decimal point
             temp_result = eval(current_equation)
-            if len(str(temp_result).split('.')[0]) > 7:
-                main_display_text = '0'
+            if len(str(temp_result).split('.')[0]) > 8:
+                main_display_text = '0.'
                 current_equation = ''
+
+            # Handle cases where the result is converted to scientific notation
+            elif 'e' in str(temp_result):
+
+                [decimal, caratted] = str(temp_result).split('e')
+                
+                # If the decimal is smaller than 8 places
+                if float(caratted) <= -8:
+
+                    # Set the display to zero but keep the result in the stored equation
+                    main_display_text = '0.'
+                    current_equation = str(temp_result)
+                    return
+
+
+                # Return the display to a non-scientific notation
+                # Handle case where there are decimal numbers
+                if '-' in caratted:
+
+                else:
+                    main_display_text = (decimal + ('0'*caratted)).replace('.', '') + '.'
+                    current_equation = str(temp_result)
+
+
+            # Account for case where there are digits after the decimal
+            elif len(str(temp_result).split('.')) > 1:
+
+                # if there ate more than 8 digits after the decimal
+                if len(str(temp_result).split('.')[1]) > 8:
+
+                    # Set the display to zero but keep the result in the stored equation
+                    main_display_text = '0.'
+                    current_equation = str(temp_result)
 
             total = round(eval(current_equation), 7)
             if abs(total) > 10000000:
-                main_display_text = '0'
+                main_display_text = 'ERROR'
                 current_equation = ''
             else:
-                if total != '0':
+                if total != 0:
                     main_display_text = str(total).strip('0')
+                    if '.' not in main_display_text:
+                        main_display_text += '.'
                     current_equation = str(total)
                 else:
-                    main_display_text = '0'
+                    main_display_text = '0.'
                     current_equation = ''
         except ZeroDivisionError:
             main_display_text = 'Zero div Error '
@@ -351,7 +386,7 @@ class CalculatorScreen(GridLayout):
         global current_equation
         global memory
         try:
-            main_display_text = '0'
+            main_display_text = '0.'
             memory = '0'
             current_equation = ''
         except ZeroDivisionError:

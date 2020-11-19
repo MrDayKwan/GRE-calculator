@@ -69,7 +69,10 @@ pip install -r requirements.txt
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The GRE Calculator can be used with all standard calculator functions, as well as . Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+[![GRE On-Screen Calculator Use 1][use-gif-1]]
+[![GRE On-Screen Calculator Use 2][use-gif-2]]
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -115,14 +118,13 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 ## Acknowledgements
 
 * [YashKhandelwal8](https://auth.geeksforgeeks.org/user/YashKhandelwal8/articles) from GeeksForGeeks wrote a [nice article](https://www.geeksforgeeks.org/how-to-make-calculator-using-kivy-python/) on building basic calculator functions from scratch using Kivy. This project derives initial functions from this article.
-* [Jakub Bláha](https://github.com/JakubBlaha) wrote the [KivyOnTop](https://github.com/JakubBlaha/KivyOnTop) repository on GitHub. This was shamelessly copied and incorporated into this project.
+* [Jakub Bláha](https://github.com/JakubBlaha) wrote the [KivyOnTop](https://github.com/JakubBlaha/KivyOnTop) repository on GitHub. This was shamelessly copied and incorporated into this project to keep the GRE Calculator window above those of all other applications.
 
 
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
 [contributors-url]: https://github.com/asa-holland/GRE-calculator/graphs/contributors
 [forks-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
@@ -137,3 +139,5 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 [linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
 [product-screenshot]: images/screenshot.png
 [old-calculator-screenshot]: images/gre_calculator_old_version.JPG
+[use-gif-1]: images/arithemetic1.gif
+[use-gif-2]: images/arithemetic2.gif
