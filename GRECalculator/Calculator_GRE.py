@@ -40,25 +40,37 @@ Builder.load_string("""
 <TitleBar>
     BoxLayout:
         orientation: "horizontal"
-        # size_hint_y: None
+        size_hint: .9, 1
         BackgroundLabel:
             text: "Calculator             "
             bold: True
             font_size: '26sp'
             color: 0, 0, 0, 1
             background_color: 0.82, 0.89, 0.93, 1
-            #size_hint: 1, .5
+            # size_hint: 1, .9
             # height: self.texture_size[1]
-        BorderedButton:
-            text: "X"
-            font_size: '20sp'
-            valign: "middle"
-            size_hint: .1, .8
-            color: 249, 253, 251, 1
-            background_normal: ""
-            background_color: (0.97, 0.99, 0.98, 1)
-            # height: self.texture_size[1]
-            on_press: app.stop()
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .09, 1
+            BackgroundLabel:
+                background_color: 0.82, 0.89, 0.93, 1
+                size_hint: 1, .1
+            BorderedButton:
+                text: "X"
+                font_size: '20sp'
+                valign: "middle"
+                size_hint: 1, .8
+                color: 249, 253, 251, 1
+                background_normal: ""
+                background_color: (0.97, 0.99, 0.98, 1)
+                # height: self.texture_size[1]
+                on_press: app.stop()
+            BackgroundLabel:
+                background_color: 0.82, 0.89, 0.93, 1
+                size_hint: 1, .1
+        BackgroundLabel:
+            background_color: 0.82, 0.89, 0.93, 1
+            size_hint: .01, 1
 """)
 
 # Set minimum size of the App window to match dimensions of the GRE calculator
@@ -265,6 +277,10 @@ class CalculatorScreen(GridLayout):
         if current_equation == '':
             current_equation = '0'
 
+        # If the last character in the current equation is an operator, replace it
+        if current_equation[-1] in '*/+-':
+            current_equation = current_equation[:-1]
+
         # Set the main display to zero, append the operator button value to the equation, and update.
         # We use the button value here instead of the button text because of the symbols * and /,
         # which are not the symbols displayed as the keys on the calculator.
@@ -401,9 +417,18 @@ class CalculatorScreen(GridLayout):
         global main_display_text
         global current_equation
         global memory
-        current_equation = str(eval(current_equation + '+' + memory)).strip('0')
+
+        # if the last character of the current equation is an operation, then tack on the memory value and evaluate
+        if str(current_equation)[:-1] in '-+/*':
+            current_equation = str(eval(current_equation + memory)).strip('0')
+            main_display_text = current_equation
+            current_equation = ''
+            self.update()
+            return
+
+        # else, clear the current equation and set it to the memory value
+        current_equation = str(eval(memory)).strip('0')
         main_display_text = current_equation
-        current_equation = ''
         self.update()
 
     def clear_entry(self, sending_button):
