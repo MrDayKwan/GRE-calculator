@@ -64,6 +64,10 @@ pip install -r requirements.txt
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Run the GRE Calculator by opening command line, navigating to the installation folder and running:
+`python main.py`
+
+
 The GRE Calculator can be used with all standard calculator functions, as well as:
 * "MR" (Memory Recall), "MC" (Memory Clear) and "M+" (Memory Addition) buttons can be used to recall and store a number from the GRE Calculator memory, or clear the memory of any existing values.
 
