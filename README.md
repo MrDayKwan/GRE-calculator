@@ -139,5 +139,5 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 [linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
 [product-screenshot]: images/screenshot.png
 [old-calculator-screenshot]: images/gre_calculator_old_version.JPG
-[use-gif-1]: images/arithemetic1.gif
-[use-gif-2]: images/arithemetic2.gif
+[use-gif-1]: images/arithmetic1.gif
+[use-gif-2]: images/arithmetic2.gif
