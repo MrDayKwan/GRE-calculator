@@ -224,15 +224,21 @@ class CalculatorScreen(GridLayout):
         """
         Updates the current main display and equation text values.
         """
-        print('before Update: main_display.text = ', self.main_display.text)
-        print('before Update: self.equation_display.text = ', self.equation_display.text)
+        global current_equation
+
         self.main_display.text = main_display_text[0:12]
+
+        # Add a preceeding decimal when needed
         if '.' not in main_display_text and '.' not in self.main_display.text:
             self.main_display.text = ''.join([self.main_display.text, '.'])
+
+        # account for cases where the current equation is nothing
+        if current_equation == '':
+            current_equation = '0'
+
+        # Display the updated equation text
         self.equation_display.text = current_equation
 
-        print('Update: main_display.text = ', self.main_display.text)
-        print('Update: self.equation_display.text = ', self.equation_display.text)
 
     def send_digit(self, sending_button):
         """
@@ -334,7 +340,6 @@ class CalculatorScreen(GridLayout):
             # Evaluate the current equation, round it to eight places, and set that value as the total.
 
             # Determine the number of digits outside of the decimal point
-            print('current_equation current', current_equation)
             temp_result = eval(current_equation)
             if len(str(temp_result).split('.')[0]) > 7:
                 main_display_text = '0.'
@@ -375,14 +380,11 @@ class CalculatorScreen(GridLayout):
                     main_display_text = '0.'
                     current_equation = float(temp_result)
 
-            print('current_equation here,', current_equation)
             total = round(eval(str(current_equation)), 7)
-            print('total is before', total)
             if abs(total) > 10000000:
                 main_display_text = 'ERROR'
                 current_equation = ''
             else:
-                print('total is', total)
                 if total != 0:
                     main_display_text = str(total)
                     if '.' not in main_display_text:
@@ -473,14 +475,26 @@ class CalculatorScreen(GridLayout):
         global main_display_text
         global current_equation
         global memory
+        if current_equation == '':
+            return
+
+        # If the last character in the equation string is an operation, remove that character
+        if current_equation[-1] in '+/-*':
+            current_equation = current_equation[:-1]
+
+        # Account for an empty memory
+        if memory in ('.', '0.0', '0', '0.', '.0'):
+            memory = 0.0
+            
+        # Evaluate the current equation and save the result to memory    
         memory = str(eval(current_equation) + float(memory)).strip('0')
-        main_display_text = '0'
+        main_display_text = '0.'
         current_equation = ''
         self.update()
 
     def mem_clear(self, sending_button):
         global memory
-        memory = '0'
+        memory = '0.'
         self.update()
 
     def mem_recall(self, sending_button):
@@ -488,15 +502,19 @@ class CalculatorScreen(GridLayout):
         global current_equation
         global memory
 
-        # if the last character of the current equation is an operation, then tack on the memory value and evaluate
-        if str(current_equation)[:-1] in '-+/*':
-            current_equation = str(eval(current_equation + memory)).strip('0')
-            main_display_text = current_equation
+        # if the last character of the current equation is an operation, then tack on the memory value
+        if str(current_equation)[-1] in '-+/*':
+            current_equation = current_equation + memory
+            main_display_text = memory
             self.update()
             return
 
         # else, clear the current equation and set it to the memory value
         current_equation = str(eval(memory)).strip('0')
+        # if the number begins with a decimal, add the preceeding 0.
+        if current_equation[0] == '.':
+            current_equation = ''.join(['0', current_equation])
+
         main_display_text = current_equation
         self.update()
 
