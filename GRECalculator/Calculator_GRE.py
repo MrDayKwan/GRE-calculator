@@ -80,7 +80,7 @@ Config.set('graphics', 'resizable', False)
 # global variables
 memory = '0'
 current_equation = ''
-main_display_text = '0'
+main_display_text = '0.'
 
 
 class TransferButton(Button):
@@ -224,8 +224,15 @@ class CalculatorScreen(GridLayout):
         """
         Updates the current main display and equation text values.
         """
+        print('before Update: main_display.text = ', self.main_display.text)
+        print('before Update: self.equation_display.text = ', self.equation_display.text)
         self.main_display.text = main_display_text[0:12]
+        if '.' not in main_display_text and '.' not in self.main_display.text:
+            self.main_display.text = ''.join([self.main_display.text, '.'])
         self.equation_display.text = current_equation
+
+        print('Update: main_display.text = ', self.main_display.text)
+        print('Update: self.equation_display.text = ', self.equation_display.text)
 
     def send_digit(self, sending_button):
         """
@@ -243,7 +250,7 @@ class CalculatorScreen(GridLayout):
             return
 
         # If the main display is 0, clear the main display to avoid having numbers like 0123.5
-        if main_display_text == '0':
+        if main_display_text == '0.' or main_display_text == '0' or current_equation == '0':
             main_display_text = ''
 
         # If the current equation is 0, clear the current equation to avoid evaluation errors.
@@ -278,7 +285,7 @@ class CalculatorScreen(GridLayout):
             current_equation = '0'
 
         # If the last character in the current equation is an operator, replace it
-        if current_equation[-1] in '*/+-':
+        if current_equation[-1] in '*/+-' and sending_button.text not in '()':
             current_equation = current_equation[:-1]
 
         # Set the main display to zero, append the operator button value to the equation, and update.
@@ -293,12 +300,16 @@ class CalculatorScreen(GridLayout):
         global main_display_text
         global current_equation
 
+        # If the last character of the display is a ., and the sending button text is a button, then return
+        if main_display_text[-1] == '.' and sending_button.text == '.':
+            return
+
         # If main display equals zero, clear it.
-        if main_display_text == '0.' or current_equation == '0':
+        if main_display_text == '0.' or main_display_text == '0' or current_equation == '0':
             main_display_text = ''
 
         # If current equation equals zero, clear it
-        if current_equation == '0.' or current_equation == '0':
+        if current_equation == '0.' or main_display_text == '0' or current_equation == '0':
             current_equation = ''
 
 
@@ -315,12 +326,17 @@ class CalculatorScreen(GridLayout):
         global main_display_text
         global current_equation
 
+        # Address missing parantheses bug
+        while current_equation.count('(') != current_equation.count(')'):
+            current_equation += ')'
+
         try:
             # Evaluate the current equation, round it to eight places, and set that value as the total.
 
             # Determine the number of digits outside of the decimal point
+            print('current_equation current', current_equation)
             temp_result = eval(current_equation)
-            if len(str(temp_result).split('.')[0]) > 8:
+            if len(str(temp_result).split('.')[0]) > 7:
                 main_display_text = '0.'
                 current_equation = ''
 
@@ -334,17 +350,19 @@ class CalculatorScreen(GridLayout):
 
                     # Set the display to zero but keep the result in the stored equation
                     main_display_text = '0.'
-                    current_equation = str(temp_result)
+                    current_equation = float(temp_result)
                     return
 
 
                 # Return the display to a non-scientific notation
                 # Handle case where there are decimal numbers
                 if '-' in caratted:
+                    main_display_text = ''.join('0.', '0'*(caratted - 1), decimal.replace('.', ''))
+                    current_equation = float(temp_result)
 
                 else:
                     main_display_text = (decimal + ('0'*caratted)).replace('.', '') + '.'
-                    current_equation = str(temp_result)
+                    current_equation = float(temp_result)
 
 
             # Account for case where there are digits after the decimal
@@ -355,29 +373,39 @@ class CalculatorScreen(GridLayout):
 
                     # Set the display to zero but keep the result in the stored equation
                     main_display_text = '0.'
-                    current_equation = str(temp_result)
+                    current_equation = float(temp_result)
 
-            total = round(eval(current_equation), 7)
+            print('current_equation here,', current_equation)
+            total = round(eval(str(current_equation)), 7)
+            print('total is before', total)
             if abs(total) > 10000000:
                 main_display_text = 'ERROR'
                 current_equation = ''
             else:
+                print('total is', total)
                 if total != 0:
-                    main_display_text = str(total).strip('0')
+                    main_display_text = str(total)
                     if '.' not in main_display_text:
                         main_display_text += '.'
+                    else:
+                        main_display_text = main_display_text.strip('0')
+                        if main_display_text[0] == '.':
+                            main_display_text = ''.join(['0', main_display_text])
                     current_equation = str(total)
                 else:
                     main_display_text = '0.'
                     current_equation = ''
         except ZeroDivisionError:
-            main_display_text = 'Zero div Error '
+            print('current_equation is', current_equation)
+            main_display_text = 'ERROR'
             current_equation = ''
         except TypeError:
-            main_display_text = 'type Error '
+            print('current_equation is', current_equation)
+            main_display_text = 'ERROR'
             current_equation = ''
         except SyntaxError:
-            main_display_text = 'syntax Error '
+            print('current_equation is', current_equation)
+            main_display_text = 'ERROR'
             current_equation = ''
         self.update()
 
@@ -407,7 +435,7 @@ class CalculatorScreen(GridLayout):
             current_equation = str(eval('-1*' + current_equation))
             main_display_text = current_equation
         except ZeroDivisionError:
-            main_display_text = 'Zero division error '
+            main_display_text = 'ERROR'
             current_equation = ''
         except TypeError:
             main_display_text = 'Script error '
@@ -420,11 +448,18 @@ class CalculatorScreen(GridLayout):
     def root(self, sending_button):
         global main_display_text
         global current_equation
+
+        # Account for negative numbers
+        if current_equation[0] == '-':
+            main_display_text = 'ERROR'
+            current_equation = ''
+            self.update()
+            return
         try:
             main_display_text = str(round(eval(current_equation + '**(1/2.0)'), 7)).strip('0')
             current_equation = main_display_text
         except ZeroDivisionError:
-            main_display_text = 'Zero division error '
+            main_display_text = 'ERROR'
             current_equation = ''
         except TypeError:
             main_display_text = 'Script error '
@@ -457,7 +492,6 @@ class CalculatorScreen(GridLayout):
         if str(current_equation)[:-1] in '-+/*':
             current_equation = str(eval(current_equation + memory)).strip('0')
             main_display_text = current_equation
-            current_equation = ''
             self.update()
             return
 

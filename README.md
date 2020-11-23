@@ -71,8 +71,8 @@ pip install -r requirements.txt
 
 The GRE Calculator can be used with all standard calculator functions, as well as . Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-[![GRE On-Screen Calculator Use 1][use-gif-1]]
-[![GRE On-Screen Calculator Use 2][use-gif-2]]
+![GRE On-Screen Calculator Use 1][use-gif-1]
+![GRE On-Screen Calculator Use 2][use-gif-2]
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
