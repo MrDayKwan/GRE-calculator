@@ -530,8 +530,11 @@ class CalculatorScreen(GridLayout):
         if current_equation == '':
             return
         
-        # if the last input was an operation, clear the operation
+        # Clear the last operation
         current_equation = current_equation[:-1]
+
+        # if display text is a number,
+        main_display_text = main_display_text[:-1]
 
         # if the current equation is no empty or zero, set it to zero
         if current_equation in ('', '0', '0.', '0.0'):

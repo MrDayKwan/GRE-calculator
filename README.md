@@ -65,7 +65,7 @@ pip install -r requirements.txt
 ## Usage
 
 The GRE Calculator can be used with all standard calculator functions, as well as:
-* Memory Addition, Memory Recall and Memory Clear buttons can be used to store and recall a number from the GRE Calculator memory, or clear the memory of any existing values.
+* "MR" (Memory Recall), "MC" (Memory Clear) and "M+" (Memory Addition) buttons can be used to recall and store a number from the GRE Calculator memory, or clear the memory of any existing values.
 
 ![GRE On-Screen Calculator Memory Demonstration][use-gif-memory]
 
@@ -76,12 +76,12 @@ The GRE Calculator can be used with all standard calculator functions, as well a
 In addition, the following 'features' have been added to match the feel and function of the Classic GRE Calculator:
 * Digits and mathematical operations input using the user's keyboard do not enter onto the GRE Calculator display, only on-screen clicks of the GRE Calculator app provide input.
 * The only way to move the GRE Calculator on the view screen is to click and hold the Transfer Display button.
-* Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display an output of 0.
+* Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display an output ERROR.
 
 ![GRE On-Screen Calculator Use 2][use-gif-2]
 * The GRE Calculator always remains the top window and cannot be minimized.
 
-![GRE On-Screen Calculator Use 1][use-gif-1]
+![GRE On-Screen Calculator Use 1][use-gif-3]
 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
@@ -152,5 +152,6 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 [old-calculator-screenshot]: images/gre_calculator_old_version.JPG
 [use-gif-1]: images/arithmetic1.gif
 [use-gif-2]: images/arithmetic2.gif
+[use-gif-3]: images/arithmetic2.gif
 [use-gif-memory]: images/memory.gif
-[use-gif-ccey]: images/memory.gif
+[use-gif-cce]: images/memory.gif
