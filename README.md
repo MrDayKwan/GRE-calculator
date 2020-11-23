@@ -1,10 +1,10 @@
 # GRE Calculator
- Personal project using Kivy to deisgn a calculator app that looks and functions like the computer calculator on the Quantitative Measures section of the Graduate Records Examinations (GRE).
+ Personal project to develop and design a calculator application that looks and functions like the classic on-screen calculator used on the Quantitative Measures section of the Graduate Records Examinations (GRE).
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![GRE Calculator][product-screenshot]](https://github.com/asa-holland/GRE-calculator)
+[![GRE Calculator][use-gif-1]](https://github.com/asa-holland/GRE-calculator)
 
 The Quantitative Measures section of the GRE is taken on a computer, and the only legal calculator allowed for use during this section of the exam is an on-screen calculator provided as part of the GRE software. In some current versions of the GRE, this on-screen calculator has been reworked to have [a fresh look and appearance](https://www.ets.org/gre/revised_general/prepare/quantitative_reasoning/calculator/). However, other versions of the GRE still rely on the classic calculator program, as displayed in the following image:
 
@@ -75,7 +75,6 @@ The GRE Calculator can be used with all standard calculator functions, as well a
 
 In addition, the following 'features' have been added to match the feel and function of the Classic GRE Calculator:
 * Digits and mathematical operations input using the user's keyboard do not enter onto the GRE Calculator display, only on-screen clicks of the GRE Calculator app provide input.
-* The only way to move the GRE Calculator on the view screen is to click and hold the Transfer Display button.
 * Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display an output ERROR.
 
 ![GRE On-Screen Calculator Use 2][use-gif-2]
@@ -152,6 +151,6 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 [old-calculator-screenshot]: images/gre_calculator_old_version.JPG
 [use-gif-1]: images/arithmetic1.gif
 [use-gif-2]: images/arithmetic2.gif
-[use-gif-3]: images/arithmetic2.gif
+[use-gif-3]: images/arithmetic3.gif
 [use-gif-memory]: images/memory.gif
-[use-gif-cce]: images/memory.gif
+[use-gif-cce]: images/cce.gif
