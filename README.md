@@ -65,15 +65,22 @@ pip install -r requirements.txt
 ## Usage
 
 The GRE Calculator can be used with all standard calculator functions, as well as:
-* Memory Addition, Recall and Clear buttons can be used to store and recall a number from the GRE Calculator memory, or clear the memory of any existing values.
+* Memory Addition, Memory Recall and Memory Clear buttons can be used to store and recall a number from the GRE Calculator memory, or clear the memory of any existing values.
+
 ![GRE On-Screen Calculator Memory Demonstration][use-gif-memory]
 
-In addition, the following 'features' added to match the feel and function of the Classic GRE Calculator:
+* "C" (clear) and "CE" (clear entry) buttons to clear all input to the GRE Calculator and clear the last character or operation inputted into the GRE Calculator.
+
+![GRE On-Screen Calculator CCE Demonstration][use-gif-cce]
+
+In addition, the following 'features' have been added to match the feel and function of the Classic GRE Calculator:
 * Digits and mathematical operations input using the user's keyboard do not enter onto the GRE Calculator display, only on-screen clicks of the GRE Calculator app provide input.
 * The only way to move the GRE Calculator on the view screen is to click and hold the Transfer Display button.
 * Display view of the GRE Calculator only displays 7 digits. If a number is evaluated that contains greater than 7 digits, the GRE Calculator will crash and display an output of 0.
+
 ![GRE On-Screen Calculator Use 2][use-gif-2]
 * The GRE Calculator always remains the top window and cannot be minimized.
+
 ![GRE On-Screen Calculator Use 1][use-gif-1]
 
 
@@ -146,3 +153,4 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 [use-gif-1]: images/arithmetic1.gif
 [use-gif-2]: images/arithmetic2.gif
 [use-gif-memory]: images/memory.gif
+[use-gif-ccey]: images/memory.gif

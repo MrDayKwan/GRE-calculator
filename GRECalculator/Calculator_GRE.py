@@ -519,20 +519,24 @@ class CalculatorScreen(GridLayout):
         self.update()
 
     def clear_entry(self, sending_button):
+        """
+        Clears the last digit or operation from the current equation
+        """
+
         global main_display_text
         global current_equation
-        try:
-            main_display_text = '0'
-            current_equation = ''
-        except ZeroDivisionError:
-            main_display_text = 'Zero division error '
-            current_equation = ''
-        except TypeError:
-            main_display_text = 'Script error '
-            current_equation = ''
-        except SyntaxError:
-            main_display_text = 'Syntax error '
-            current_equation = ''
+
+        # if the current equation is empty, do nothing
+        if current_equation == '':
+            return
+        
+        # if the last input was an operation, clear the operation
+        current_equation = current_equation[:-1]
+
+        # if the current equation is no empty or zero, set it to zero
+        if current_equation in ('', '0', '0.', '0.0'):
+            current_equation = '0'
+
         self.update()
 
     def __init__(self, **kwargs):
