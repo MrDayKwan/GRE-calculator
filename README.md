@@ -69,7 +69,7 @@ pip install -r requirements.txt
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The GRE Calculator can be used with all standard calculator functions, as well as . Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The GRE Calculator can be used with all standard calculator functions, as well as the 'features' described above.
 
 ![GRE On-Screen Calculator Use 1][use-gif-1]
 ![GRE On-Screen Calculator Use 2][use-gif-2]
@@ -101,7 +101,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See ![LICENSE][license-url] for more information.
 
 
 
@@ -119,6 +119,7 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 
 * [YashKhandelwal8](https://auth.geeksforgeeks.org/user/YashKhandelwal8/articles) from GeeksForGeeks wrote a [nice article](https://www.geeksforgeeks.org/how-to-make-calculator-using-kivy-python/) on building basic calculator functions from scratch using Kivy. This project derives initial functions from this article.
 * [Jakub Bláha](https://github.com/JakubBlaha) wrote the [KivyOnTop](https://github.com/JakubBlaha/KivyOnTop) repository on GitHub. This was shamelessly copied and incorporated into this project to keep the GRE Calculator window above those of all other applications.
+* [othneildrew](https://github.com/othneildrew) for creating the [template README file](https://github.com/othneildrew/Best-README-Template) that was used as the starting point for the README for this project. 
 
 
 
