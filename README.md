@@ -87,10 +87,6 @@ In addition, the following 'features' have been added to match the feel and func
 ![GRE On-Screen Calculator Use 1][use-gif-3]
 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -148,7 +144,7 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 [issues-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
 [issues-url]: https://github.com/asa-holland/GRE-calculator/issues
 [license-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
-[license-url]: https://github.com/asa-holland/GRE-calculator/blob/master/LICENSE.txt
+[license-url]: https://github.com/asa-holland/GRE-calculator/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
 [product-screenshot]: images/screenshot.png
