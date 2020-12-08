@@ -55,19 +55,19 @@ setup(
 
 	# Your name: 
 
-	author='Asa Holland',
+	author='Asa LeHolland',
 
 	# Your email address:
 
-	author_email='hollandasa@gmail.com',
+	author_email='asaleholland@gmail.com',
 
 	# Link to your github repository or website: 
 
-	url='https://github.com/asa-holland/GRE-calculator',
+	url='https://github.com/asa-leholland/GRE-calculator',
 
 	# Download Link from where the project can be downloaded from:
 
-	download_url='https://github.com/asa-holland/GRE-calculator',
+	download_url='https://github.com/asa-leholland/GRE-calculator',
 
 	# List of keywords: 
 
