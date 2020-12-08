@@ -117,7 +117,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/asa-lehollan
 <!-- CONTACT -->
 ## Contact
 
-Asa LeHolland - [@AsaHolland404](https://twitter.com/AsaHolland404) - hollandasa@gmail.com
+Asa LeHolland - [@AsaHolland404](https://twitter.com/AsaHolland404) - asaleholland@gmail.com
 
 Project Link: [https://github.com/asa-leholland/GRE-calculator](https://github.com/asa-leholland/GRE-calculator)
 
