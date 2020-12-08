@@ -110,16 +110,16 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/asa-holland/GRE-calculator/LICENSE.txt) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/asa-leholland/GRE-calculator/LICENSE.txt) for more information.
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Asa Holland - [@AsaHolland404](https://twitter.com/AsaHolland404) - hollandasa@gmail.com
+Asa LeHolland - [@AsaHolland404](https://twitter.com/AsaHolland404) - hollandasa@gmail.com
 
-Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com/asa-holland/GRE-calculator)
+Project Link: [https://github.com/asa-leholland/GRE-calculator](https://github.com/asa-leholland/GRE-calculator)
 
 
 
@@ -136,17 +136,17 @@ Project Link: [https://github.com/asa-holland/GRE-calculator](https://github.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
-[contributors-url]: https://github.com/asa-holland/GRE-calculator/graphs/contributors
-[forks-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
-[forks-url]: https://github.com/asa-holland/GRE-calculator/network/members
-[stars-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
-[stars-url]: https://github.com/asa-holland/GRE-calculator/stargazers
-[issues-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
-[issues-url]: https://github.com/asa-holland/GRE-calculator/issues
-[license-shield]: https://github.com/asa-holland/GRE-calculator.svg?style=flat-square
-[license-url]: https://github.com/asa-holland/GRE-calculator/LICENSE.txt
+[contributors-url]: https://github.com/asa-leholland/GRE-calculator/graphs/contributors
+[forks-shield]: https://github.com/asa-leholland/GRE-calculator.svg?style=flat-square
+[forks-url]: https://github.com/asa-leholland/GRE-calculator/network/members
+[stars-shield]: https://github.com/asa-leholland/GRE-calculator.svg?style=flat-square
+[stars-url]: https://github.com/asa-leholland/GRE-calculator/stargazers
+[issues-shield]: https://github.com/asa-leholland/GRE-calculator.svg?style=flat-square
+[issues-url]: https://github.com/asa-leholland/GRE-calculator/issues
+[license-shield]: https://github.com/asa-leholland/GRE-calculator.svg?style=flat-square
+[license-url]: https://github.com/asa-leholland/GRE-calculator/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
+[linkedin-url]: https://www.linkedin.com/in/asa-leholland-a2a0b5b7/
 [product-screenshot]: images/screenshot.png
 [old-calculator-screenshot]: images/gre_calculator_old_version.JPG
 [use-gif-1]: images/arithmetic1.gif
